@@ -62,10 +62,10 @@ func (db *InMemoryDB) Insert(tableName string, key string, record Record) error 
 	table.indexLock.Lock()
 
 	for column, value := range record {
-		if _, exists := table.indexes[column]; !exists {
-			table.indexes[column] = make(map[interface{}][]string)
+		if index, exists := table.indexes[column]; exists {
+			// If index exists for this column, update it
+			index[value] = append(index[value], key)
 		}
-		table.indexes[column][value] = append(table.indexes[column][value], key)
 	}
 	table.indexLock.Unlock()
 	return nil

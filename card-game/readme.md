@@ -1,0 +1,1 @@
+Design a game where there are 5 players and each player at the end of their turn, plays a card. After each of the players has finished their turn, the player who put down the least valued card wins and gets all the cards in the pool. The game continues till a player has all the cards
